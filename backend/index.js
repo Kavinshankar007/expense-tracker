@@ -8,7 +8,10 @@ const expenseRoutes = require('./routes/expenses');
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: 'https://expense-tracker-inky-nine-62.vercel.app',
+  credentials: true
+}));
 app.use(express.json());
 
 // Routes
