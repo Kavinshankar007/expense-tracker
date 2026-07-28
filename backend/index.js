@@ -9,10 +9,12 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: 'https://expense-tracker-inky-nine-62.vercel.app',
+  origin: [
+    'https://expense-tracker-inky-nine-62.vercel.app',
+    'https://expense-tracker-git-main-kavinshankar007s-projects.vercel.app'
+  ],
   credentials: true
 }));
-app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
