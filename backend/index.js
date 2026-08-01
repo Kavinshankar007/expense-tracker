@@ -23,7 +23,18 @@ app.get('/', (req, res) => {
   res.json({ message: 'Expense Tracker API is running!' });
 });
 
+// Database test route
+app.get('/test-db', async (req, res) => {
+  try {
+    const pool = require('./db');
+    const result = await pool.query('SELECT NOW()');
+    res.json({ status: 'DB Connected', time: result.rows[0].now });
+  } catch (err) {
+    res.json({ status: 'DB Failed', error: err.message });
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-});
+})
